@@ -51,16 +51,16 @@
 						<table class="table Monitor__table">
 							<tbody>
 								<tr>
-									<th>HP 值</th>
-									<td>123</td>
+									<th>PH 值</th>
+									<td id="ph">Loading...</td>
 								</tr>
 								<tr>
 									<th>溫度</th>
-									<td>12</td>
+									<td id="temp">Loading...</td>
 								</tr>
 								<tr>
 									<th>TDS</th>
-									<td>12</td>
+									<td id="tds">Loading...</td>
 								</tr>
 							</tbody>
 						</table>
@@ -133,10 +133,7 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		setInterval(() => {
-			$('.snapshot').attr('src', `http://163.22.32.201:8081/web/snapshot.jpg?${Math.random()}`);
-		}, 1000);
-	</script>
+	<script src="config.js"></script>
+	<script src="index.js"></script>
 </body>
 </html>
