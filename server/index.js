@@ -14,9 +14,11 @@ app.use(express.static('web'));
 /**
  * API handler
  */
-app.get('/', cors(), function (req, res) {
+app.get('/sensors', cors(), function (req, res) {
 	res.json({
-		msg: '安安'
+		ph: 0.6,
+		temp: 23,
+		tds: 66
 	});
 });
 
