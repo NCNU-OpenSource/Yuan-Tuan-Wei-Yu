@@ -32,12 +32,12 @@ io.on('connection', function (socket) {
 // }, 3000);
 
 setInterval(() => {
-    dht22.read(22, 4, function(err, temperature, humidity) {
-        if (!err) {
-            console.log('temp: ' + temperature.toFixed(1) + '°C, ' + 'humidity: ' + humidity.toFixed(1) + '%');
-            io.sockets.emit('value', { temp: temperature.toFixed(1)});
-        }
-    });
+	dht22.read(22, 4, function(err, temperature, humidity) {
+		if (!err) {
+			console.log('temp: ' + temperature.toFixed(1) + '°C, ' + 'humidity: ' + humidity.toFixed(1) + '%');
+			io.sockets.emit('value', { temp: temperature.toFixed(1)});
+		}
+	});
 }, 1000);
 
 http.listen(3000, function(){

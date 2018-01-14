@@ -7,16 +7,11 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "gh-pages": "^1.1.0",
     "node-dht-sensor": "0.0.33",
     "socket.io": "^2.0.4"
   },
-  "devDependencies": {
-    "gh-pages": "^1.1.0"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d client",
     "start": "node server/index.js"
   },
   "repository": {
