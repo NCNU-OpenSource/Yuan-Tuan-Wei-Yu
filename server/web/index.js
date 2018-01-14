@@ -2,8 +2,7 @@
 	/**
 	 * parivate variable
 	 */
-	const _apiBase = CONFIG.apiBase;
-	const _socket = io('127.0.0.1:3000');
+	const _socket = io();
 	let _sensorInterval;
 
 	/**
@@ -39,7 +38,7 @@
 	function _getSensors() {
 		return new Promise((resolve, reject) => {
 			$.ajax({
-				url: `http://${_apiBase}/sensors`,
+				url: `/sensors`,
 				type: 'get',
 				dataType: 'json',
 				success: function (data) {
