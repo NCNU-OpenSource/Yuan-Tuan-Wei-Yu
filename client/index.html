@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Yuan-Tuan-Wei-Yu</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<link rel="stylesheet" href="./indes.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row mt-3">
+			<div class="col-12">
+				<h3 class="text-center title">遠端餵魚</h3>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-12">
+				<div class="card Monitor">
+					<div class="card-body">
+						<h4 class="card-title"><span class="badge badge-warning">即時監控</span></h4>
+						<div>
+							<img src="http://163.22.32.201:8081/web/snapshot.jpg" class="img-thumbnail snapshot" />
+						</div>
+						<table class="table Monitor__table">
+							<tbody>
+								<tr>
+									<th>HP 值</th>
+									<td>123</td>
+								</tr>
+								<tr>
+									<th>溫度</th>
+									<td>12</td>
+								</tr>
+								<tr>
+									<th>TDS</th>
+									<td>12</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title"><span class="badge badge-warning">控制台</span></h4>
+						<form>
+							<div class="form-group row">
+								<label for="light" class="col-3 col-form-label">電燈</label>
+								<div class="col-9">
+									<label class="switch">
+										<input id="light" type="checkbox" checked>
+										<span class="slider round"></span>
+									</label>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="temperature" class="col-3 col-form-label">溫度</label>
+								<div class="col-9">
+									<input type="text" class="form-control" id="temperature">
+								</div>
+							</div>
+						</form>
+						<button class="btn btn-primary btn-block">設定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-3 mb-5">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title"><span class="badge badge-warning">即時餵魚</span></h4>
+						<form>
+							<fieldset class="form-group">
+								<div class="row">
+									<legend class="col-form-label col-sm-2 pt-0">餵食量</legend>
+									<div class="col-sm-10">
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="quality" id="gridRadios1" value="option1" checked>
+											<label class="form-check-label" for="gridRadios1">
+												多
+											</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="quality" id="gridRadios2" value="option2">
+											<label class="form-check-label" for="gridRadios2">
+												中
+											</label>
+										</div>
+										<div class="form-check disabled">
+											<input class="form-check-input" type="radio" name="quality" id="gridRadios3" value="option3">
+											<label class="form-check-label" for="gridRadios3">
+												少
+											</label>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+						<button class="btn btn-primary btn-block">餵魚</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		setInterval(() => {
+			$('.snapshot').attr('src', `http://163.22.32.201:8081/web/snapshot.jpg?${Math.random()}`);
+		}, 1000);
+	</script>
+</body>
+</html>

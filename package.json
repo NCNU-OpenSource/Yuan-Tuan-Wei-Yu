@@ -1,0 +1,26 @@
+{
+  "name": "yuan-tuan-wei-yu",
+  "version": "1.0.0",
+  "description": "遠端餵魚",
+  "main": "index.js",
+  "dependencies": {
+    "gh-pages": "^1.1.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NCNU-OpenSource/Yuan-Tuan-Wei-Yu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NCNU-OpenSource/Yuan-Tuan-Wei-Yu/issues"
+  },
+  "homepage": "https://github.com/NCNU-OpenSource/Yuan-Tuan-Wei-Yu#readme"
+}
