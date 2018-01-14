@@ -2,12 +2,12 @@
     "name": "\u9060\u7aef\u9935\ud83d\udc1f",
     "icons": [
         {
-            "src": "./android-chrome-192x192.png",
+            "src": "/Yuan-Tuan-Wei-Yu/icons/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "./android-chrome-512x512.png",
+            "src": "/Yuan-Tuan-Wei-Yu/icons/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
