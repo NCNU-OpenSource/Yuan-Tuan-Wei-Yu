@@ -5,7 +5,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const path = require('path');
 const cors = require('cors');
-// const dht22 = require('node-dht-sensor');
+const dht22 = require('node-dht-sensor');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,10 +27,20 @@ io.on('connection', function (socket) {
 	});
 });
 
+// setInterval(() => {
+// 	io.sockets.emit('value', { ph: Math.random() });
+// }, 3000);
+
 setInterval(() => {
-	io.sockets.emit('value', { ph: Math.random() });
-}, 3000);
+    dht22.read(22, 4, function(err, temperature, humidity) {
+        if (!err) {
+            console.log('temp: ' + temperature.toFixed(1) + '°C, ' + 'humidity: ' + humidity.toFixed(1) + '%');
+            io.sockets.emit('value', { temp: temperature.toFixed(1)});
+        }
+    });
+}, 1000);
 
 http.listen(3000, function(){
 	console.log('listening on 127.0.0.1:3000');
 });
+
