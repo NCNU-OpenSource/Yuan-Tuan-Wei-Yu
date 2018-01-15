@@ -9,7 +9,7 @@
 	 * init
 	 */
 	setInterval(() => {
-		$('.snapshot').attr('src', `http://163.22.32.201:8081/web/snapshot.jpg?${Math.random()}`);
+		$('.snapshot').attr('src', `https://ip201.puli32.ncnu.edu.tw/web/snapshot.jpg?${Math.random()}`);
 	}, 1000);
 
 	/**
