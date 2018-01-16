@@ -21,7 +21,11 @@
 		});
 	});
 
-	_socket.on('led', (data) => {
-		console.log(data);
+	_socket.on('led', (on) => {
+		if (!!on) {
+			$('#light').prop('checked', true);
+		} else {
+			$('#light').prop('checked', false);
+		}
 	})
 })();
