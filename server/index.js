@@ -55,18 +55,10 @@ io.on('connection', function (socket) {
 	});
 });
 
-// setInterval(() => {
-// 	io.sockets.emit('value', { ph: Math.random() });
-// }, 3000);
-
-// setInterval(() => {
-// 	dht22.read(22, 4, function(err, temperature, humidity) {
-// 		if (!err) {
-// 			console.log('temp: ' + temperature.toFixed(1) + '°C, ' + 'humidity: ' + humidity.toFixed(1) + '%');
-// 			io.sockets.emit('value', { temp: temperature.toFixed(1)});
-// 		}
-// 	});
-// }, 1000);
+/**
+ * take snapshot
+ */
+spawn('watch', ['-n', '3', 'sh', '/home/pi/Yuan-Tuan-Wei-Yu/snapshot.sh']);
 
 http.listen(3000, function(){
 	console.log('listening on 127.0.0.1:3000');
