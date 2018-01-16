@@ -8,6 +8,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "node-dht-sensor": "0.0.33",
+    "onoff": "^1.1.9",
     "socket.io": "^2.0.4"
   },
   "scripts": {

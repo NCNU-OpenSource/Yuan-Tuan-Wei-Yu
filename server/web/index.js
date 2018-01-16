@@ -20,4 +20,8 @@
 			$(`#${key}`).text(data[key]);
 		});
 	});
+
+	_socket.on('led', (data) => {
+		console.log(data);
+	})
 })();

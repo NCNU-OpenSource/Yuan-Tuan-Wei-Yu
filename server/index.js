@@ -5,7 +5,8 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const path = require('path');
 const cors = require('cors');
-const dht22 = require('node-dht-sensor');
+const Gpio = require('onoff').Gpio;
+const _led = new Gpio(16, 'out');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,8 +20,10 @@ app.use(express.static('server/web'));
 io.on('connection', function (socket) {
 	console.log('client connected');
 
-	socket.on('register', function (data) {
-	});
+	/**
+	 * get led on or off
+	 */
+	socket.emit('led', _led.readSync());
 
 	socket.on('disconnect', function () {
 		console.log('user disconnected');
@@ -31,14 +34,14 @@ io.on('connection', function (socket) {
 // 	io.sockets.emit('value', { ph: Math.random() });
 // }, 3000);
 
-setInterval(() => {
-	dht22.read(22, 4, function(err, temperature, humidity) {
-		if (!err) {
-			console.log('temp: ' + temperature.toFixed(1) + '°C, ' + 'humidity: ' + humidity.toFixed(1) + '%');
-			io.sockets.emit('value', { temp: temperature.toFixed(1)});
-		}
-	});
-}, 1000);
+// setInterval(() => {
+// 	dht22.read(22, 4, function(err, temperature, humidity) {
+// 		if (!err) {
+// 			console.log('temp: ' + temperature.toFixed(1) + '°C, ' + 'humidity: ' + humidity.toFixed(1) + '%');
+// 			io.sockets.emit('value', { temp: temperature.toFixed(1)});
+// 		}
+// 	});
+// }, 1000);
 
 http.listen(3000, function(){
 	console.log('listening on 127.0.0.1:3000');
