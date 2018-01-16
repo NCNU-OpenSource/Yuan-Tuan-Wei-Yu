@@ -22,6 +22,7 @@ app.use(express.static('server/web'));
 io.on('connection', function (socket) {
 	console.log('client connected');
 
+	// turn led on/off
 	socket.on('turnLed', function (isOn) {
 		if (isOn) {
 			spawn('python', ['/home/pi/Yuan-Tuan-Wei-Yu/python/ledOn.py']);
@@ -32,9 +33,21 @@ io.on('connection', function (socket) {
 		socket.emit('led', isOn);
 	});
 
-	/**
-	 * get led on or off
-	 */
+	// feed
+	socket.on('feed', function (q) {
+		const timeout = {
+			'1': 8,
+			'2': 5,
+			'3': 3
+		};
+
+		const p = spawn('python', ['/home/pi/Yuan-Tuan-Wei-Yu/python/servo.py']);
+		setTimeout(function () {
+			p.kill();
+		}, timeout[q] * 1000);
+	});
+
+	// get led on or off
 	socket.emit('led', _led.readSync());
 
 	socket.on('disconnect', function () {

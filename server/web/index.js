@@ -33,6 +33,7 @@
 	 * bind event
 	 */
 	$('#light').on('change', _handleLedChange);
+	$('.btn-feed').on('click', _handleFeed);
 
 	/**
 	 * event handler
@@ -40,5 +41,10 @@
 	function _handleLedChange() {
 		const isOn = $('#light').is(':checked');
 		_socket.emit('turnLed', isOn);
+	}
+
+	function _handleFeed() {
+		const q = $('.input-q:checked').val();
+		_socket.emit('feed', q);
 	}
 })();
