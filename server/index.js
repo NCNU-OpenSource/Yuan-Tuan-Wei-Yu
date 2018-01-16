@@ -10,6 +10,8 @@ const { spawn } = require('child_process');
 const ds18b20 = require('ds18b20');
 
 const _led = new Gpio(16, 'out');
+let _targetTemp = null;
+let _bonOn = false;
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -51,8 +53,33 @@ io.on('connection', function (socket) {
 	// get ds18b20 id
 	ds18b20.sensors(function (err, ids) {
 		setInterval(function () {
-			socket.emit('value', { temp: ds18b20.temperatureSync(ids[0])});
+			const temp = ds18b20.temperatureSync(ids[0]);
+			socket.emit('value', { temp: temp });
+
+			if (!!_targetTemp) {
+				if (temp < _targetTemp) {
+					if (!_bonOn) {
+						// bonOn
+						console.log('turn bon on');
+						_bonOn = true;
+						spawn('python', ['/home/pi/Yuan-Tuan-Wei-Yu/python/bonOn.py']);
+					}
+				} else {
+					if (!!_bonOn) {
+						// bonOff
+						console.log('turn bon off');
+						_bonOn = false;
+						spawn('python', ['/home/pi/Yuan-Tuan-Wei-Yu/python/bonOff.py']);
+					}
+				}
+			}
 		}, 1000);
+	});
+
+	// set temp
+	socket.on('setTemp', function (temp) {
+		console.log('set target temp: ' + temp);
+		_targetTemp = temp;
 	});
 
 	// get led on or off

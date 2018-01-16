@@ -34,6 +34,7 @@
 	 */
 	$('#light').on('change', _handleLedChange);
 	$('.btn-feed').on('click', _handleFeed);
+	$('.btn-setTemp').on('click', _handleSetTemp);
 
 	/**
 	 * event handler
@@ -46,5 +47,9 @@
 	function _handleFeed() {
 		const q = $('.input-q:checked').val();
 		_socket.emit('feed', q);
+	}
+
+	function _handleSetTemp() {
+		_socket.emit('setTemp', $('#temperature').val());
 	}
 })();
