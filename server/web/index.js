@@ -1,4 +1,4 @@
-(() => {
+(function () {
 	/**
 	 * parivate variable
 	 */
@@ -8,20 +8,20 @@
 	/**
 	 * init
 	 */
-	setInterval(() => {
-		$('.snapshot').attr('src', `/image/image.jpg?${Math.random()}`);
+	setInterval(function () {
+		$('.snapshot').attr('src', '/image/image.jpg?' + Math.random());
 	}, 1000);
 
 	/**
 	 * ws event
 	 */
-	_socket.on('value', (data) => {
-		Object.keys(data).forEach((key, i) => {
-			$(`#${key}`).text(data[key]);
+	_socket.on('value', function (data) {
+		Object.keys(data).forEach(function (key, i) {
+			$('#' + key).text(data[key]);
 		});
 	});
 
-	_socket.on('led', (on) => {
+	_socket.on('led', function (on) {
 		if (!!on) {
 			$('#light').prop('checked', true);
 		} else {
