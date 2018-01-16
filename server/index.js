@@ -7,6 +7,7 @@ const path = require('path');
 const cors = require('cors');
 const Gpio = require('onoff').Gpio;
 const { spawn } = require('child_process');
+const ds18b20 = require('ds18b20');
 
 const _led = new Gpio(16, 'out');
 
@@ -45,6 +46,13 @@ io.on('connection', function (socket) {
 		setTimeout(function () {
 			p.kill();
 		}, timeout[q] * 1000);
+	});
+
+	// get ds18b20 id
+	ds18b20.sensors(function (err, ids) {
+		setInterval(function () {
+			socket.emit('value', { temp: ds18b20.temperatureSync(ids[0])});
+		}, 1000);
 	});
 
 	// get led on or off
