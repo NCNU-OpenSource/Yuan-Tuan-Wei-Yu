@@ -28,4 +28,17 @@
 			$('#light').prop('checked', false);
 		}
 	})
+
+	/**
+	 * bind event
+	 */
+	$('#light').on('change', _handleLedChange);
+
+	/**
+	 * event handler
+	 */
+	function _handleLedChange() {
+		const isOn = $('#light').is(':checked');
+		_socket.emit('turnLed', isOn);
+	}
 })();

@@ -6,6 +6,8 @@ const io = require('socket.io')(http);
 const path = require('path');
 const cors = require('cors');
 const Gpio = require('onoff').Gpio;
+const { spawn } = require('child_process');
+
 const _led = new Gpio(16, 'out');
 
 // parse application/x-www-form-urlencoded
@@ -19,6 +21,16 @@ app.use(express.static('server/web'));
  */
 io.on('connection', function (socket) {
 	console.log('client connected');
+
+	socket.on('turnLed', function (isOn) {
+		if (isOn) {
+			spawn('python', ['/home/pi/Yuan-Tuan-Wei-Yu/python/ledOn.py']);
+		} else {
+			spawn('python', ['/home/pi/Yuan-Tuan-Wei-Yu/python/ledOff.py']);
+		}
+
+		socket.emit('led', isOn);
+	});
 
 	/**
 	 * get led on or off
