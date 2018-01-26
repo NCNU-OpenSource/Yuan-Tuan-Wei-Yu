@@ -2,7 +2,24 @@
 透過手機 Web app 遠端監控魚缸，監測水質，餵魚。  
 簡報: https://docs.google.com/presentation/d/1XILiHoCh-3hCT4_O94E6LjNnAZBM8lx6Rv6cTUsI5Ck/edit#slide=id.p  
   
-[TOC]  
+- [用戶端介面示意圖](#%E7%94%A8%E6%88%B6%E7%AB%AF%E4%BB%8B%E9%9D%A2%E7%A4%BA%E6%84%8F%E5%9C%96)
+- [系統架構](#%E7%B3%BB%E7%B5%B1%E6%9E%B6%E6%A7%8B)
+  - [Server side](#server-side)
+  - [Client side](#client-side)
+- [設備](#%E8%A8%AD%E5%82%99)
+  1. [LED](#1-led)
+  2. [水溫感測](#2-%E6%B0%B4%E6%BA%AB%E6%84%9F%E6%B8%AC)
+  3. [IC 自動控溫器](#3-ic-%E8%87%AA%E5%8B%95%E6%8E%A7%E6%BA%AB%E5%99%A8)
+  4. [PH 值監測](#4-ph-%E5%80%BC%E7%9B%A3%E6%B8%AC)
+  5. [TDS 總溶解固體監測](#5-tds-%E7%B8%BD%E6%BA%B6%E8%A7%A3%E5%9B%BA%E9%AB%94%E7%9B%A3%E6%B8%AC)
+  6. [餵魚](#6-%E9%A4%B5%E9%AD%9A)
+  7. [影像監控](#7-%E5%BD%B1%E5%83%8F%E7%9B%A3%E6%8E%A7)
+- [電路圖](#%E9%9B%BB%E8%B7%AF%E5%9C%96)
+- [分工](#%E5%88%86%E5%B7%A5)
+  - [張育瑩](#%E5%BC%B5%E8%82%B2%E7%91%A9)
+  - [蔡富亘](#%E8%94%A1%E5%AF%8C%E4%BA%98)
+  - [陳炫宇](#%E9%99%B3%E7%82%AB%E5%AE%87)
+  - [王仁佑](#%E7%8E%8B%E4%BB%81%E4%BD%91)
 
 ## 用戶端介面示意圖
 ![](https://i.imgur.com/AL9SwlC.png)  
