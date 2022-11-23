@@ -10,7 +10,7 @@
     "express": "^4.16.2",
     "node-dht-sensor": "0.0.33",
     "onoff": "^1.1.9",
-    "socket.io": "^2.4.0"
+    "socket.io": "^2.5.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
